@@ -1,0 +1,34 @@
+<!-- templates/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+    <main>
+        <form action="{{ url_for('views.search') }}" method="post">
+            <input type="text" name="query" placeholder="Search again..." required>
+            <input type="submit" value="Search">
+        </form>
+        <section>
+            {% if results %}
+                {% for result in results %}
+                    <article>
+                        <h2><a href="{{ url_for('views.profile', id=result['_source']['id']) }}">{{ result['_source']['name'] }}</a></h2>
+                        <p>{{ result['_source']['description'] }}</p>
+                        <img src="{{ result['_source']['image_url'] }}" alt="{{ result['_source']['name'] }}">
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No results found for your search. Please try again.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

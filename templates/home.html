@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>People Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>People Search</h1>
+    </header>
+    <main>
+        <section>
+            <form action="{{ url_for('search') }}" method="post">
+                <label for="query">Search:</label>
+                <input type="text" id="query" name="query" required>
+                <input type="submit" value="Search">
+            </form>
+        </section>
+        <section>
+            <h2>Advanced Search Options</h2>
+            <!-- Add your advanced search options here -->
+        </section>
+    </main>
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

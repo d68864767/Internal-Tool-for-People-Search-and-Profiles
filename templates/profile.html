@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Profile Page</h1>
+    </header>
+    <main>
+        <section id="profile">
+            <h2>{{ profile.name }}</h2>
+            <img src="{{ profile.image_url }}" alt="{{ profile.name }}">
+            <p>{{ profile.description }}</p>
+            <h3>Other Details</h3>
+            <ul>
+                {% for key, value in profile.other_data.items() %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="back">
+            <a href="{{ url_for('views.home') }}">Back to Home</a>
+        </section>
+    </main>
+    <footer>
+        <p>© 2022 Profile Explorer. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
